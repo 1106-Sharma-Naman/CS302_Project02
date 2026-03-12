@@ -7,6 +7,7 @@ class Node {
     public:
         Activity data;
         Node* nxt;
+        
 };
 
 class ActivityLogLinked : public ActivityLog {

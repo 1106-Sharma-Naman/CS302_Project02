@@ -5,7 +5,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic -Iinclude
 
-SRC_DIR = src
+SRC_DIR = .
 BUILD_DIR = build
 INCLUDE_DIR = include
 
@@ -19,7 +19,7 @@ TARGET = project2
 # ------------------------------------------------------------
 SRCS = $(SRC_DIR)/driver.cpp \
        $(SRC_DIR)/ActivityLogArray.cpp \
-       $(SRC_DIR)/ActivityLogLinked.cpp 
+       $(SRC_DIR)/ActivityLogLinkedList.cpp 
 
 # Object files (in build directory)
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)

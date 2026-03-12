@@ -1,11 +1,13 @@
 #include "ActivityLog.h"
+#include "ActivityLogArray.h"
+#include "ActivityLogLinkedList.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 int main(){
 
-ActivityLog log;
+ActivityLogArray log;
 
 //Creating Activities
 
