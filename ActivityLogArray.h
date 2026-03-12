@@ -16,7 +16,7 @@ class ActivityLogArray : public ActivityLog {
         Activity peek() const override;
         bool isEmpty() const override;
         int size() const override;
-        ~ActivityLogArray() override;
+        
 
 };
 #endif

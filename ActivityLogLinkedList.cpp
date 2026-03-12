@@ -1,63 +1,58 @@
-#include "ActivityLog.h"
+#include "ActivityLogLinkedList.h"
 #include <iostream>
-#include <string>
+#include <string> 
+
 using namespace std;
 
-class Node {
-    public:
-        Activity data;
-        Node* nxt;
-        
-};
+ActivityLogLinkedList::ActivityLogLinkedList() {
+    head = nullptr;
+    count = 0;
+}
 
-class ActivityLogLinked : public ActivityLog {
-private:
-    Node* head;  
-    int count;
-
-public:
-    ActivityLogLinked() : head(nullptr), count(0) {}
-
-    ~ActivityLogLinked() {
-        while (head) {
-            Node* temporary = head;
-            head = head->nxt;
-            delete temporary;
-        }
-    }
-
-    void add(const Activity& a) override {
-        Node* newNode = new Node{a, head};
-        head = newNode;
-        count++;
-    }
-
-    Activity remove() override {
-        if (head == nullptr) {
-            std::cout << "Cannot remove because log is empty\n";
-            return Activity{};
-        }
+ActivityLogLinkedList::~ActivityLogLinkedList() {
+    while (head != nullptr) {
         Node* temp = head;
-        Activity ret = head->data;
         head = head->nxt;
         delete temp;
-        count--;
-        return ret;
+    }
+}
+
+void ActivityLogLinkedList::add(const Activity& activity) {
+    Node* newNode = new Node(activity);
+    newNode->nxt = head;
+    head = newNode;
+    count++;
+}
+
+Activity ActivityLogLinkedList::remove() {
+    if (head == nullptr) {
+        cout << "Cannot remove because log is empty\n";
+        return Activity{};
     }
 
-    Activity peek() const override {
-        if (head == nullptr) {
-            std::cout << "Log is empty\n";
-            return Activity{};
-        }
-        return head->data;
+    Node* temp = head;
+    Activity ret = head->data;
+    head = head->nxt;
+
+    delete temp;
+    count--;
+
+    return ret;
+}
+
+Activity ActivityLogLinkedList::peek() const {
+    if (head == nullptr) {
+        cout << "Log is empty\n";
+        return Activity{};
     }
 
-    bool isEmpty() const override {
-        return head == nullptr;
-    }
+    return head->data;
+}
 
-    int size() const override {
-        return count;
-    }
-};
+bool ActivityLogLinkedList::isEmpty() const {
+    return head == nullptr;
+}
+
+int ActivityLogLinkedList::size() const {
+    return count;
+}

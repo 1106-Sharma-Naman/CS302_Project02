@@ -8,8 +8,8 @@
 class Node {
      public:
          Activity data;
-                Node* nxt;
-                Node(const Activity& a) : activity(act), next(nullptr) {}
+        Node* nxt;
+        Node(const Activity& a) : data(a), nxt(nullptr) {}
 };
 
 class ActivityLogLinkedList : public ActivityLog {

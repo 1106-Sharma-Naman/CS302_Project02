@@ -1,20 +1,14 @@
-#include "ActivityLog.h"
+#include "ActivityLogArray.h"
 #include <iostream>
 using namespace std;
 
-//size of the log
-const int MAX_SIZE = 120; 
-
-Activity activities[MAX_SIZE];
-int topPosition =-1;
-
 // Default constructor
-ActivityLog::ActivityLog() {
+ActivityLogArray::ActivityLogArray() {
    topPosition = -1;
 }
 
 // Adds a new log
-void ActivityLog::add(const Activity& activity){
+void ActivityLogArray::add(const Activity& activity){
     if(topPosition >= MAX_SIZE-1){
         cout << "Log is full.\n";
         return;
@@ -24,7 +18,7 @@ void ActivityLog::add(const Activity& activity){
 }
 
 //removed the the most recently added log
-Activity ActivityLog::remove(){
+Activity ActivityLogArray::remove(){
     if(isEmpty()){
         cout<<"Log is empty.\n";
         return Activity{};
@@ -36,7 +30,7 @@ Activity ActivityLog::remove(){
 }
 
 // View the most recently added activity log without deleting it
-Activity ActivityLog::peek() const{
+Activity ActivityLogArray::peek() const{
     if(isEmpty()){
         cout<<"Log is empty.\n";
         return Activity{};
@@ -45,11 +39,11 @@ Activity ActivityLog::peek() const{
 }
 
 // Tells you if the log is empty
-bool ActivityLog::isEmpty() const{
+bool ActivityLogArray::isEmpty() const{
     return topPosition == -1;
 }
 
 // Returns the number of activities
-int ActivityLog::size() const{
+int ActivityLogArray::size() const{
     return topPosition+1;
 }

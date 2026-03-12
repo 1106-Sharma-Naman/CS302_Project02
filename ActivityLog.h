@@ -14,8 +14,7 @@ class Activity{
 class ActivityLog{
     public:
 //Constructors
-        ActivityLog();
-        ActivityLog(int id, string description);
+       //  ActivityLog(int id, string description);
 
 // To add the activity
        virtual void add(const Activity& activity)=0;
